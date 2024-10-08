@@ -1,30 +1,24 @@
-class Proyecto2:
+class ProblemSituation:
+    ERROR_USAGE = 1
 
-    ERROR_USO = 1
+    def __init__(self):
+        self.application = Application()
 
-    def __init__(self, args):
-        self.aplicacion = Aplicacion(args)
-
-    def ejecuta(self):
+    def run(self):
         try:
-            self.aplicacion.ejecuta()
+            self.application.run()
         except ValueError as e:  
             print(str(e))
-            exit(self.ERROR_USO)
+            exit(self.ERROR_USAGE)
 
 
-class Aplicacion:
-    
-    def __init__(self, args):
-        # Inicializa con los argumentos
-        self.args = args
-
-    def ejecuta(self):
-        print("HELLO")
+class Application:
+    def __init__(self):
         pass
 
+    def run(self):
+        print("HELLO")
 
-if __name__ == "__main__":
-    import sys
-    proyecto = Proyecto2(sys.argv[1:])
-    proyecto.ejecuta()
+
+situation = ProblemSituation()
+situation.run()
