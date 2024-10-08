@@ -1,3 +1,5 @@
+from application import Application
+
 class ProblemSituation:
     ERROR_USAGE = 1
 
@@ -10,15 +12,6 @@ class ProblemSituation:
         except ValueError as e:  
             print(str(e))
             exit(self.ERROR_USAGE)
-
-
-class Application:
-    def __init__(self):
-        pass
-
-    def run(self):
-        print("HELLO")
-
 
 situation = ProblemSituation()
 situation.run()
