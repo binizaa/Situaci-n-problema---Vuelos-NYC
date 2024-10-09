@@ -1,5 +1,4 @@
 from usuario import Usuario
-from baseDeDatos import BaseDeDatos
 import pandas as pd
 
 
@@ -42,7 +41,7 @@ def crear_cuenta():
     usuario_actual = Usuario(nombre_usuario, contrasena)
 
     # Guardamos la nueva cuenta en el archivo CSV
-    usuario_actual.agregarRegistro("datosUsuarios.csv") 
+    usuario_actual.agregarRegistro("./baseDeDatos/datosUsuarios.csv") 
 
     print(f"Cuenta creada exitosamente para {usuario_actual}.")
 
@@ -51,8 +50,7 @@ def crear_cuenta():
 # Función principal de login
 def login():
     global BDUsuario 
-    BDU = BaseDeDatos("datosUsuarios.csv")
-    BDUsuario = BDU.read()  # Cargamos los datos de los usuarios
+    BDUsuario = pd.read_csv("./baseDeDatos/datosUsuarios.csv")  # Cargamos los datos de los usuarios
 
     while True:
         print("\nBienvenido al sistema. ¿Qué te gustaría hacer?")

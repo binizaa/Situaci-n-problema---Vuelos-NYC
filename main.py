@@ -65,6 +65,14 @@ def mostrar_menu():
             print("Opción no válida, por favor intente de nuevo.")
             opcValida = False
 
+JFK = pd.read_csv("./baseDeDatos/JFK.csv")
+#print(len(JFK))
+EWR = pd.read_csv("./baseDeDatos/EWR.csv")
+#print(len(EWR))
+LGA = pd.read_csv("./baseDeDatos/LGA.csv")
+#print(len(LGA))
+datos_completos = pd.concat([JFK, EWR, LGA], axis = 0, ignore_index = True) 
+
 usuario_actual = login()
 
 print(f"Usuario actual: {usuario_actual}")
