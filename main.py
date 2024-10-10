@@ -76,3 +76,40 @@ datos_completos = pd.concat([JFK, EWR, LGA], axis = 0, ignore_index = True)
 usuario_actual = login()
 
 print(f"Usuario actual: {usuario_actual}")
+
+def mes_nombre(mes):
+    if mes == "1":
+        return "Enero"
+    elif mes == "2":
+        return "Febrero"
+    elif mes == "3":
+        return "Marzo"
+    elif mes == "4":
+        return  "Abril"
+    elif mes == "5":
+        return  "Mayo"
+    elif mes == "6":
+        return "Junio"
+    elif mes == "7":
+        return "Julio"
+    elif mes == "8":
+        return "Agosto"
+    elif mes == "9":
+        return "Septiembre"
+    elif mes == "10":
+        return "Octubre"
+    elif mes == "11":
+        return "Noviembre"
+    elif mes == "12":
+        return "Diciembre"
+    else: 
+        return "Error"
+    
+datos_completos["month"] = datos_completos["Mes"].apply(mes_nombre)
+datos_completos = datos_completos.drop(columns=["month"])
+
+def distance_mi_km():
+    datos_completos["Distancia_Km"] = datos_completos["distance"] * 1.60934
+
+def airTime_min_hrs():
+    datos_completos["Tiempo_Hr"] = datos_completos["air_time"]/60
