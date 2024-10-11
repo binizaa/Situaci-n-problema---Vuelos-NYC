@@ -2,11 +2,19 @@ from usuario import Usuario
 import pandas as pd
 from autenticacion import login
 
+JFK = pd.read_csv("./baseDeDatos/JFK.csv")
+EWR = pd.read_csv("./baseDeDatos/EWR.csv")
+LGA = pd.read_csv("./baseDeDatos/LGA.csv")
+datos_completos = pd.concat([JFK, EWR, LGA], axis = 0, ignore_index = True) 
+
 def contar_vuelos_origen_destino():
     print("Contabilizando la cantidad de vuelos según su origen y destino...")
 
 def contar_vuelos_origen_fecha():
-    print("Contabilizando el total de vuelos según su origen y una determinada fecha...")
+    lugar = input("Ingresa el origen: ")
+    fecha = input("Ingresa la fecha: ")
+
+    #print(datos_completos[datos[""]])
 
 def resumen_estadistico_vuelos_origen_variable():
     print("Realizando resumen estadístico de los vuelos según el aeropuerto de origen y la variable seleccionada...")
@@ -64,14 +72,6 @@ def mostrar_menu():
         else:
             print("Opción no válida, por favor intente de nuevo.")
             opcValida = False
-
-JFK = pd.read_csv("./baseDeDatos/JFK.csv")
-#print(len(JFK))
-EWR = pd.read_csv("./baseDeDatos/EWR.csv")
-#print(len(EWR))
-LGA = pd.read_csv("./baseDeDatos/LGA.csv")
-#print(len(LGA))
-datos_completos = pd.concat([JFK, EWR, LGA], axis = 0, ignore_index = True) 
 
 usuario_actual = login()
 
