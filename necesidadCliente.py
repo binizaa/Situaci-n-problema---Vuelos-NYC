@@ -145,6 +145,6 @@ def estatus_retraso(estatus):
     if estatus < 0:
         return "Vuelo anticipado"
     elif estatus > 0:
-        return "Vuelo anticipado"
+        return "Vuelo retrasado"
     else:
         return "Vuelo en tiempo"
