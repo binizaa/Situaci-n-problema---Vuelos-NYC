@@ -1,4 +1,4 @@
-from menu import solicitarEstadoVuelo, solicitarOrigen
+from menu import solicitarEstadoVuelo, solicitarFecha, solicitarOrigen
 from usuario import Usuario
 import pandas as pd
 from autenticacion import login
@@ -196,15 +196,15 @@ def resumen_retrasos_vuelos():
     opcion = solicitarEstadoVuelo()  
 
     if origen in ["JFK", "EWR", "LGA"]:
-            salida = datos_completos[(datos_completos["Origin"] == origen) & 
+            salida = datos_completos[(datos_completos["origin"] == origen) & 
                                      (datos_completos["dep_delay"]) & 
                                      (datos_completos["Status_atraso"] == opcion)]
             salidan = len(salida)
-            llegada = datos_completos[(datos_completos["Origin"] == origen) & 
+            llegada = datos_completos[(datos_completos["origin"] == origen) & 
                                       (datos_completos["arr_delay"]) & 
                                       (datos_completos["Status_atraso"] == opcion)]
             llegadan = len(llegada)
-            todos = datos_completos[(datos_completos["Origin"] == origen) & 
+            todos = datos_completos[(datos_completos["origin"] == origen) & 
                                     (datos_completos["Status_atraso"] == opcion)]
             todosn = len(todos)
     print(f"Resumen de vuelos {opcion} en el aeropuerto {origen}: ")
@@ -249,4 +249,37 @@ def resumen_criterio_fecha(criterio, mes, dia):
     else:
        print(f"El criterio debe ser 'Distancia_Km' o 'Tiempo_Hr'.")
        return 
+    
+def funcionalidad_personalizada():
+    fecha = solicitarFecha()
+    dia,mes,anio = fecha
 
+    print(f"Aeropuertos y ciudades con más vuelos el día {dia}/{mes}/{anio}")
+    
+    aeropuerto = datos_completos[(datos_completos["day"] == dia) &
+                             (datos_completos["month"] == mes) &
+                             (datos_completos["year"] == anio)]["origin"].mode()
+    
+    print("Aeropuertos con más salidas:")
+    
+    for a in aeropuerto: 
+        salida = datos_completos[(datos_completos["day"] == dia) &
+                             (datos_completos["month"] == mes) &
+                             (datos_completos["year"] == anio) &
+                             (datos_completos["origin"] == a)]
+        salidan = len(salida)
+        print(f"El aeropuerto {a} tuvo {salidan} vuelos")
+
+    ciudad = datos_completos[(datos_completos["day"] == dia) &
+                             (datos_completos["month"] == mes) &
+                             (datos_completos["year"] == anio) ]["dest"].mode()
+    
+    print("Ciudades con más llegadas:")
+    
+    for c in ciudad: 
+        llegada = datos_completos[(datos_completos["day"] == dia) &
+                             (datos_completos["month"] == mes) &
+                             (datos_completos["year"] == anio) &
+                             (datos_completos["dest"] == c)]
+        llegadan = len(llegada)
+        print(f"La ciudad {c} tuvo {llegadan} vuelos")
