@@ -1,3 +1,4 @@
+from menu import solicitarEstadoVuelo, solicitarOrigen
 from usuario import Usuario
 import pandas as pd
 from autenticacion import login
@@ -150,7 +151,7 @@ def mostrar_menu():
             print("Opción no válida, por favor intente de nuevo.")
             opcValida = False
 
-<<<<<<< HEAD
+
 #usuario_actual = login()
 #print(f"Usuario actual: {usuario_actual}")
 
@@ -248,10 +249,4 @@ def resumen_criterio_fecha(criterio, mes, dia):
     else:
        print(f"El criterio debe ser 'Distancia_Km' o 'Tiempo_Hr'.")
        return 
-=======
-usuario_actual = login()
 
-print(f"Usuario actual: {usuario_actual}")
-
-solicitarCriterio()
->>>>>>> 1376f823705755dd94965821d9074a43653f8106
