@@ -88,7 +88,6 @@ def mostrar_menu():
             opcValida = False
 
 #usuario_actual = login()
-
 #print(f"Usuario actual: {usuario_actual}")
 
 #print(datos_completos[1:3])
@@ -126,6 +125,27 @@ def resumen_estadistico_vuelos_origen_variable(origen, variable):
     print(f"El valor máximo registrado para la variable {variable} es de: {valor_maximo} ")
     print(f"El valor promedio registrado para la variable {variable} es de: {media} ")
     print(f"El valor de la desviación estándar para la variable {variable} es de: {desviacion_estandar} ")
+
+def resumen_retrasos_vuelos():
+    origen = solicitarOrigen()
+    opcion = solicitarEstadoVuelo()  
+
+    if origen in ["JFK", "EWR", "LGA"]:
+            salida = datos_completos[(datos_completos["Origin"] == origen) & 
+                                     (datos_completos["dep_delay"]) & 
+                                     (datos_completos["Status_atraso"] == opcion)]
+            salidan = len(salida)
+            llegada = datos_completos[(datos_completos["Origin"] == origen) & 
+                                      (datos_completos["arr_delay"]) & 
+                                      (datos_completos["Status_atraso"] == opcion)]
+            llegadan = len(llegada)
+            todos = datos_completos[(datos_completos["Origin"] == origen) & 
+                                    (datos_completos["Status_atraso"] == opcion)]
+            todosn = len(todos)
+    print(f"Resumen de vuelos {opcion} en el aeropuerto {origen}: ")
+    print(f"Salida: Hubo {salidan} vuelos {opcion}")
+    print(f"Llegada: Hubo {llegadan} vuelos {opcion}")
+    print(f"Todos: Hubo {todosn} vuelos {opcion}")
 
 #Tienes que ver si hay años bisiestos, y corregir lo de los meses
 def resumen_criterio_fecha(criterio, mes, dia):
