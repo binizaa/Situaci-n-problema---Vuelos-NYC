@@ -129,11 +129,16 @@ meses = {
 }
 
 def datos():
-    JFK = pd.read_csv("./baseDeDatos/JFK.csv")
-    EWR = pd.read_csv("./baseDeDatos/EWR.csv")
-    LGA = pd.read_csv("./baseDeDatos/LGA.csv")
-    
-    return pd.concat([JFK, EWR, LGA], axis = 0, ignore_index = True) 
+   JFK = pd.read_csv("./baseDeDatos/JFK.csv")
+   EWR = pd.read_csv("./baseDeDatos/EWR.csv")
+   LGA = pd.read_csv("./baseDeDatos/LGA.csv")
+   '''
+   JFK = pd.read_csv("https://raw.githubusercontent.com/Alejandro-FB/Bases-Datos/main/2013%20-%20JFK.csv")
+   EWR = pd.read_csv("https://raw.githubusercontent.com/Alejandro-FB/Bases-Datos/main/2013%20-%20EWR.csv")
+   LGA = pd.read_csv("https://raw.githubusercontent.com/Alejandro-FB/Bases-Datos/main/2013%20-%20LGA.csv")
+   '''
+   
+   return pd.concat([JFK, EWR, LGA], axis = 0, ignore_index = True) 
 
 def getLugar(lugar):
     return lugarMap[lugar].capitalize() 
