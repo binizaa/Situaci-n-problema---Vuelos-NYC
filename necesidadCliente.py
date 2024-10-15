@@ -128,7 +128,7 @@ meses = {
     12: "Diciembre"
 }
 
-def datos_completos():
+def datos():
     JFK = pd.read_csv("./baseDeDatos/JFK.csv")
     EWR = pd.read_csv("./baseDeDatos/EWR.csv")
     LGA = pd.read_csv("./baseDeDatos/LGA.csv")
@@ -136,10 +136,10 @@ def datos_completos():
     return pd.concat([JFK, EWR, LGA], axis = 0, ignore_index = True) 
 
 def getLugar(lugar):
-    return lugarMap[lugar]
+    return lugarMap[lugar].capitalize() 
 
 def mes_nombre(mes):
-    return meses[mes]
+    return meses[mes].capitalize() 
 
 def estatus_retraso(estatus):
     if estatus < 0:
