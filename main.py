@@ -1,5 +1,6 @@
 from necesidadCliente import datos, mes_nombre, getLugar, estatus_retraso
 from solicitudes import *
+from autenticacion import login
 
 datos_completos = datos()  # 4
 
@@ -20,10 +21,10 @@ def contar_vuelos_origen_destino():
     destino = solicitarDestino()
 
     if origen not in datos_completos["Origen"].unique():
-        print(f"Error: No hay vuelos en ese {origen}.")
+        print(f"Error: No hay vuelos en {origen}.")
         return
     if destino not in datos_completos["Destino"].unique():
-        print(f"Error: No hay vuelos en ese {destino}.")
+        print(f"Error: No hay vuelos en {destino}.")
         return
 
     total_vuelos = len(datos_completos[(datos_completos["Origen"] == origen) & (datos_completos["Destino"] == destino)])
@@ -211,4 +212,7 @@ def mostrar_menu():
 
 
 #Main
+usuario_actual = login()
+
+print(f"Bienvenido al chat, {usuario_actual}. Soy el PROFE ALEX y te ayudaré a consultar la información de los vuelos")
 mostrar_menu()
