@@ -57,7 +57,7 @@ def resumen_estadistico_vuelos_origen_variable():
     variable = solicitarVariable()
 
     if origen not in datos_completos["Origen"].unique():
-        print(f"Error: No hay vuelos en ese {origen}.")
+        print(f"Error: No hay vuelos en {origen}.")
         return
 
     datos = datos_completos.loc[datos_completos["Origen"] == origen, variable]
@@ -123,7 +123,7 @@ def contar_aviones_aeropuerto_vuelos():
     tailnum = solicitarTailum()  
     aeropuerto = solicitarAeropuerto() 
 
-    if aeropuerto != "todas":
+    if aeropuerto != "Todas":
         total_vuelos = datos_completos[(datos_completos["tailnum"] == tailnum) & (datos_completos["Origen"] == aeropuerto)]
         total_vuelos_count = len(total_vuelos)
         print(f"El avión con número de cola {tailnum} ha tenido {total_vuelos_count} vuelos desde el aeropuerto {aeropuerto}.")
@@ -133,6 +133,7 @@ def contar_aviones_aeropuerto_vuelos():
         print(f"El avión con número de cola {tailnum} ha tenido {total_vuelos_count} vuelos en total desde los 3 aeropuertos.")
 
 #---------------FUNCIÓN PERSONALIZADA---------------
+#Muestra los aeropuertos y las ciudades con más vuelos en un día específico.
 def funcionalidad_personalizada():
     print("\n---------------FUNCIÓN PERSONALIZADA---------------")
     fecha = solicitarFecha()
@@ -168,11 +169,12 @@ def funcionalidad_personalizada():
         llegadan = len(llegada)
         print(f"La ciudad {c} tuvo {llegadan} vuelos")
 
-
+# Función para finalizar el programa.
 def finalizar_programa():
     print("Finalizando el programa...")
     exit()
 
+# Función para mostrar el menú principal.
 def mostrar_menu():
     opcValida = False
     while opcValida == False:
@@ -187,8 +189,6 @@ def mostrar_menu():
         print("x. Finalizar el programa.")
         
         opcion = input("\nIngrese una opción: ").lower()
-
-        opcValida = True
         
         if opcion == 'a':
             contar_vuelos_origen_destino()
@@ -209,9 +209,14 @@ def mostrar_menu():
         else:
             print("Opción no válida, por favor intente de nuevo.")
             opcValida = False
+        
+        a = input("\nSi quieres regresar al menu, ingresa una M:").lower()
+
+        if a != 'm':
+            exit()
 
 
-#Main
+# Main: Inicia el programa y muestra el menú después de iniciar sesión.
 usuario_actual = login()
 
 print(f"Bienvenido al chat, {usuario_actual}. Soy el PROFE ALEX y te ayudaré a consultar la información de los vuelos")
