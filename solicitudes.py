@@ -2,12 +2,19 @@ from necesidadCliente import mes_nombre
 
 # Funciones que solicitan los datos
 
+# Función 'solicitarOrigen'
+# Solicita al usuario que ingrese el origen del vuelo y lo capitaliza (primera letra en mayúscula).
 def solicitarOrigen():
     return input("Ingresa origen: ").capitalize() 
 
+# Función 'solicitarDestino'
+# Solicita al usuario que ingrese el destino del vuelo y lo capitaliza (primera letra en mayúscula).
 def solicitarDestino():
     return input("Ingresa destino: ").capitalize()  
 
+# Función 'solicitarFecha'
+# Solicita al usuario una fecha en formato dd/mm/aaaa, valida el formato, y retorna la fecha en una lista [día, mes (en texto), año].
+# Si el formato es incorrecto, vuelve a pedir la fecha.
 def solicitarFecha():
     fecha = input("Ingresa la fecha (dd/mm/aaaa): ").strip()
     try:
@@ -18,6 +25,9 @@ def solicitarFecha():
         print("Error: La fecha ingresada no tiene el formato correcto (dd/mm/aaaa).")
         return solicitarFecha() 
 
+# Función 'solicitarCriterio'
+# Solicita al usuario que seleccione un criterio de análisis (1 para "Tiempo_Hr", 2 para "Distancia_Km").
+# Si elige una opción inválida o si no ingresa un número, vuelve a solicitar la entrada.
 def solicitarCriterio():
     print("Menú de criterios:")
     print("1. Tiempo en horas")
@@ -35,9 +45,14 @@ def solicitarCriterio():
         print("Error: Debes ingresar un número.")
         return solicitarCriterio() 
 
+# Función 'solicitarTailum'
+# Solicita el número de cola del avión al usuario. Se devuelve en mayúsculas.
 def solicitarTailum():
     return input("Ingresa el número de cola del avión: ").upper()
 
+# Función 'solicitarEstadoVuelo'
+# Solicita al usuario que seleccione el estado del vuelo: "Vuelo anticipado", "Vuelo retrasado" o "Vuelo a tiempo".
+# Si se selecciona una opción inválida o si no se ingresa un número, vuelve a solicitar la entrada.
 def solicitarEstadoVuelo():
     print("\n---------------Menú de estado del vuelo:---------------")
     print("1. Vuelo anticipado")
@@ -58,7 +73,9 @@ def solicitarEstadoVuelo():
         print("Error: Debes ingresar un número.")
         return solicitarEstadoVuelo()  # Volver a solicitar si no es un número
 
-
+# Función 'solicitarVariable'
+# Muestra un menú con las variables de vuelo disponibles, solicita una opción y retorna la clave de la variable seleccionada.
+# Si la selección es inválida o no se ingresa un número, el programa sale.
 def solicitarVariable():
     variables_map = {
         "dep_time": "Hora de salida real.",

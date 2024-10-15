@@ -1,5 +1,6 @@
 import pandas as pd
 
+# Mapeo de códigos de aeropuerto a nombres de aeropuertos
 lugarMap = {
     "JFK": "Jhon F.Kennedy",
     "EWR": "Newark",
@@ -113,6 +114,7 @@ lugarMap = {
     "BQN": "Aguadilla"
 }
 
+# Mapeo de números de meses a nombres de meses en español
 meses = {
     1: "Enero",
     2: "Febrero",
@@ -128,10 +130,15 @@ meses = {
     12: "Diciembre"
 }
 
+# Función 'datos'
+# Esta función carga los datos de tres aeropuertos (JFK, EWR, LGA) desde archivos CSV y los combina en un solo DataFrame.
+# Retorna un DataFrame que contiene los datos consolidados de los tres aeropuertos.
 def datos():
    JFK = pd.read_csv("./baseDeDatos/JFK.csv")
    EWR = pd.read_csv("./baseDeDatos/EWR.csv")
    LGA = pd.read_csv("./baseDeDatos/LGA.csv")
+
+    # La siguiente sección es un comentario de una fuente de datos alternativa
    '''
    JFK = pd.read_csv("https://raw.githubusercontent.com/Alejandro-FB/Bases-Datos/main/2013%20-%20JFK.csv")
    EWR = pd.read_csv("https://raw.githubusercontent.com/Alejandro-FB/Bases-Datos/main/2013%20-%20EWR.csv")
@@ -140,12 +147,23 @@ def datos():
    
    return pd.concat([JFK, EWR, LGA], axis = 0, ignore_index = True) 
 
+# Función 'getLugar'
+# Recibe un código de aeropuerto (e.g., 'JFK') y retorna el nombre completo del aeropuerto.
+# Usa el diccionario 'lugarMap' para hacer la conversión de código a nombre.
 def getLugar(lugar):
     return lugarMap[lugar].capitalize() 
 
+# Función 'mes_nombre'
+# Recibe un número de mes (e.g., 1 para enero) y retorna el nombre del mes en español.
+# Usa el diccionario 'meses' para realizar la conversión de número a nombre.
 def mes_nombre(mes):
     return meses[mes].capitalize() 
 
+# Función 'estatus_retraso'
+# Evalúa el estado de retraso de un vuelo basado en el tiempo de retraso (en minutos).
+# - Si el tiempo es negativo (< 0), se considera que el vuelo fue anticipado.
+# - Si el tiempo es positivo (> 0), se considera que el vuelo fue retrasado.
+# - Si el tiempo es exactamente 0, se considera que el vuelo fue a tiempo.
 def estatus_retraso(estatus):
     if estatus < 0:
         return "Vuelo anticipado"

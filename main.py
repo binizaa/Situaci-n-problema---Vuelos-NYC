@@ -187,8 +187,6 @@ def mostrar_menu():
         print("x. Finalizar el programa.")
         
         opcion = input("\nIngrese una opción: ").lower()
-
-        opcValida = True
         
         if opcion == 'a':
             contar_vuelos_origen_destino()
@@ -209,6 +207,11 @@ def mostrar_menu():
         else:
             print("Opción no válida, por favor intente de nuevo.")
             opcValida = False
+        
+        a = input("\nSi quieres regresar al menu, ingresa una M:").lower()
+
+        if a != 'm':
+            exit()
 
 
 #Main
