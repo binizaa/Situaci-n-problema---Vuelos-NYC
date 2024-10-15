@@ -55,7 +55,7 @@ def login():
     while True:
         print("\nBienvenido al sistema. ¿Qué te gustaría hacer?")
         print("1. Iniciar sesión")
-        print("2. Crear cuenta (Aun no lo corras, tiene un error, trabajanding -Bini)")
+        print("2. Crear cuenta")
         print("3. Salir")
         
         opcion = input("Selecciona una opción (1/2/3): ")
